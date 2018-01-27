@@ -6,16 +6,13 @@ const schema = new GraphQLSchema({
     fields: {
       hello: {
         type: GraphQLString,
-        resolve() {
-          return 'world'
-        }
       }
     }
   })
 })
 
 const rootValue = {
-  hello: 'world in the rootValue'
+  hello() { return 'world in the rootValue' }
 }
 
 graphql(schema, `{ hello }`, rootValue).then(console.log, console.error)
